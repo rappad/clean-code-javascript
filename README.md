@@ -18,7 +18,9 @@
 ## Introduction
 
 ![Humorous image of software quality estimation as a count of how many expletives
-you shout when reading code](http://www.osnews.com/images/comics/wtfm.jpg) (ว่ากันว่า Code quality นั้นสามารถวัดด้วย WTF/minutes ในระหว่างการอ่าน code)
+you shout when reading code](http://www.osnews.com/images/comics/wtfm.jpg)
+
+_ว่ากันว่า Code quality นั้นสามารถวัดด้วย WTF/minutes ในระหว่างการอ่าน code_
 
 บทความนี้ได้นำเนื้อหาจากบางส่วนของหนังสือ [_Clean Code_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) By _Robert C. Martin_ เข้ามาปรับใช้กับ _Javascript_ โดยเนื้อหาต่อไปนี้เป็นเพียงแค่ _guide_ ที่จะช่วยให้เหล่า Javascript Developers สามารถนำไปปรับใช้ในการเขียน Javascript ให้ [readable, reusable, and refactorable](https://github.com/ryanmcdermott/3rs-of-software-architecture) โดยทั้งนี้ ท่านผู้อ่านไม่จำเป็นต้องเคร่ง หรือทำตามทุกข้อที่อยู่ในบทความนี้ เพราะนี่เป็นแค่แนวทางที่ ผู้เขียนหนังสือ _Clean Code_ ได้แนะนำมาและถ่ายทอดมาจากประสบการณ์ของเขา
 
