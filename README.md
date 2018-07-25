@@ -18,17 +18,17 @@
 ## Introduction
 
 ![Humorous image of software quality estimation as a count of how many expletives
-you shout when reading code](http://www.osnews.com/images/comics/wtfm.jpg)
+you shout when reading code](http://www.osnews.com/images/comics/wtfm.jpg) (ว่ากันว่า Code quality นั้นสามารถวัดด้วย WTF/minutes ในระหว่างการอ่าน code)
 
-บทความนี้ได้นำเนื้อหาจากบางส่วนของหนังสือ [_Clean Code_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) By _Robert C. Martin_ เข้ามาปรับใช้กับ _Javascript_ โดยเนื้อหาต่อไปนี้เป็นเพียงแค่ *guide* ที่จะช่วยให้เหล่า Javascript Developers สามารถนำไปปรับใช้ในการเขียน Javascript ให้ [readable, reusable, and refactorable](https://github.com/ryanmcdermott/3rs-of-software-architecture) โดยท่านผู้อ่านไม่จำเป็นต้องเคร่ง หรือทำตามทุกข้อที่อยู่ในบทความนี้ เพราะนี่เป็นแค่แนวทางที่ ผู้เขียนหนังสือ _Clean Code_ ได้แนะนำมาและถ่ายทอดมาจากประสบการณ์ของเขา
+บทความนี้ได้นำเนื้อหาจากบางส่วนของหนังสือ [_Clean Code_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) By _Robert C. Martin_ เข้ามาปรับใช้กับ _Javascript_ โดยเนื้อหาต่อไปนี้เป็นเพียงแค่ _guide_ ที่จะช่วยให้เหล่า Javascript Developers สามารถนำไปปรับใช้ในการเขียน Javascript ให้ [readable, reusable, and refactorable](https://github.com/ryanmcdermott/3rs-of-software-architecture) โดยทั้งนี้ ท่านผู้อ่านไม่จำเป็นต้องเคร่ง หรือทำตามทุกข้อที่อยู่ในบทความนี้ เพราะนี่เป็นแค่แนวทางที่ ผู้เขียนหนังสือ _Clean Code_ ได้แนะนำมาและถ่ายทอดมาจากประสบการณ์ของเขา
 
 ศาสตร์ของ Software Engineering ได้เกิดขึ้นมาราว 50 ปี ซึ่งยังคงเป็นอะไรที่ใหม่และยังมีอะไรให้เรียนรู้อีกมาก ในอนาคตเราอาจจะมีตัวชี้วัด กฎ หรืออะไรก็ตามแต่ที่เข้มงวดกว่า ณ ปัจจุบัน เพื่อให้พวกเราได้สามารถทำตาม แต่ ณ​ ปัจจุบัน ผู้อ่านสามารถใช้ guidelines ในบทความนี้เป็นแนวทาง และตัวชี้วัดคุณภาพของ Javascript code ที่ท่าน หรือคนในทีมของท่านเขียนได้
 
-และสุดท้ายนี้ การที่ได้อ่านบทความนี้ไม่สามารถทำให้ท่าน Developer ที่ดีได้ทันที เช่นกับที่การเขียนโปรแกรมมานานก็ไม่ได้หมายความว่าท่านจะเขียน code ที่ perfect ได้ Code ที่ท่านเขียนครั้งแรกนั้นเปรียบเสมือนแค่ *การร่างครั้งแรก* ถ้าเทียบกับการวาดรูปก็อาจจะเป็นเพียงแค่การร่างด้วยดินสอบางๆ ปราศจากการตัดเส้น ลงสี และเก็บรายละเอียด เพราะฉะนั้น เราไม่ควรปล่อยให้ code เราเป็นแค่การร่างด้วยเส้นดินสอบางๆ กลับไปเก็บรายละเอียด review กับคนในทีม, refractor และวนไปเรื่อยๆ
+และสุดท้ายนี้ การที่ได้อ่านบทความนี้ไม่สามารถทำให้ท่าน Developer ที่ดีได้ทันที เช่นกับที่การเขียนโปรแกรมมานานก็ไม่ได้หมายความว่าท่านจะเขียน code ที่ perfect ได้ Code ที่ท่านเขียนครั้งแรกนั้นเปรียบเสมือนแค่ _การร่างครั้งแรก_ ถ้าเทียบกับการวาดรูปก็อาจจะเป็นเพียงแค่การร่างด้วยดินสอบางๆ ปราศจากการตัดเส้น ลงสี และเก็บรายละเอียด เพราะฉะนั้น เราไม่ควรปล่อยให้ code เราเป็นแค่การร่างด้วยเส้นดินสอบางๆ กลับไปเก็บรายละเอียด, review กับคนในทีม, refractor และทำวนไป 5555
 
 ## **Variables**
 
-### Use meaningful and pronounceable variable names
+### ใช้ชื่อที่สื่อความหมาย และอ่านได้ง่าย
 
 **Bad:**
 
@@ -44,7 +44,7 @@ const currentDate = moment().format('YYYY/MM/DD')
 
 **[⬆ back to top](#table-of-contents)**
 
-### Use the same vocabulary for the same type of variable
+### ใช้ศัพท์ที่ไปในแนวทางเดียวกันเมื่อ variable นั้นมีชนิดเดียวกัน
 
 **Bad:**
 
@@ -62,21 +62,23 @@ getUser()
 
 **[⬆ back to top](#table-of-contents)**
 
-### Use searchable names
+### ใช่ชื่อที่หาได้ง่าย
 
 We will read more code than we will ever write. It's important that the code we do write is readable and searchable. By _not_ naming variables that end up being meaningful for understanding our program, we hurt our readers. Make your names searchable. Tools like [buddy.js](https://github.com/danielstjules/buddy.js) and [ESLint](https://github.com/eslint/eslint/blob/660e0918933e6e7fede26bc675a0763a6b357c94/docs/rules/no-magic-numbers.md) can help identify unnamed constants.
+
+พวกเราส่วนมากจะอ่าน code กันมากกว่าเขียนเสมอ เพราะฉะนั้น code ที่เราเขียนนั้นจะต้อง อ่านและหาได้ง่ายโดย developers ท่านอื่นๆ โดยอาจจะนำ tools เช่น [buddy.js](https://github.com/danielstjules/buddy.js) and [ESLint](https://github.com/eslint/eslint/blob/660e0918933e6e7fede26bc675a0763a6b357c94/docs/rules/no-magic-numbers.md) เข้ามาช่วยในการหา constant variable ที่เรายังไม่ได้ตั้งชื่อ
 
 **Bad:**
 
 ```javascript
-// What the heck is 86400000 for?
+// 86400000 หมายความว่าอะไร ?
 setTimeout(blastOff, 86400000)
 ```
 
 **Good:**
 
 ```javascript
-// Declare them as capitalized named constants.
+// ตั้งชื่อ constant ด้วยตัวพิมใหญ่และชื่อที่สื่อความหมายของตัวเลขดั่งกล่าว
 const MILLISECONDS_IN_A_DAY = 86400000
 
 setTimeout(blastOff, MILLISECONDS_IN_A_DAY)
@@ -84,7 +86,7 @@ setTimeout(blastOff, MILLISECONDS_IN_A_DAY)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Use explanatory variables
+### ใช้ variable ที่สามารถอธิบายตัวของมันเองได้
 
 **Bad:**
 
@@ -105,9 +107,9 @@ saveCityZipCode(city, zipCode)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Avoid Mental Mapping
+### หลีกเลี่ยงการใช้ตัวย่อ หรือชื่อที่ไม่สื่อข้อมูลของ variable
 
-Explicit is better than implicit.
+หรือ หลีกเลี่ยงการตั้งชื่อที่เราเข้าใจอยู่คนเดียวนั่นเอง
 
 **Bad:**
 
@@ -119,7 +121,7 @@ locations.forEach(l => {
   // ...
   // ...
   // ...
-  // Wait, what is `l` for again?
+  // l คืออะไรว้า...
   dispatch(l)
 })
 ```
@@ -140,9 +142,9 @@ locations.forEach(location => {
 
 **[⬆ back to top](#table-of-contents)**
 
-### Don't add unneeded context
+### อย่าเพิ่มอะไรที่ไม่เกี่ยวลงไปในชื่อ variable
 
-If your class/object name tells you something, don't repeat that in your variable name.
+ถ้า class/object มันบอกความหมายของตัวมันเองอยู่แล้ว
 
 **Bad:**
 
@@ -174,7 +176,7 @@ function paintCar(car) {
 
 **[⬆ back to top](#table-of-contents)**
 
-### Use default arguments instead of short circuiting or conditionals
+### จงใช้ default arguments
 
 Default arguments are often cleaner than short circuiting. Be aware that if you use them, your function will only provide default values for `undefined` arguments. Other "falsy" values such as `''`, `""`, `false`, `null`, `0`, and `NaN`, will not be replaced by a default value.
 
