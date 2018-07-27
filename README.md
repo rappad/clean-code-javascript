@@ -64,7 +64,7 @@ getUser()
 
 **[⬆ back to top](#table-of-contents)**
 
-### ใช่ชื่อที่หาได้ง่าย
+### ใช้ชื่อที่หาได้ง่าย
 
 We will read more code than we will ever write. It's important that the code we do write is readable and searchable. By _not_ naming variables that end up being meaningful for understanding our program, we hurt our readers. Make your names searchable. Tools like [buddy.js](https://github.com/danielstjules/buddy.js) and [ESLint](https://github.com/eslint/eslint/blob/660e0918933e6e7fede26bc675a0763a6b357c94/docs/rules/no-magic-numbers.md) can help identify unnamed constants.
 
@@ -146,7 +146,7 @@ locations.forEach(location => {
 
 ### อย่าเพิ่มอะไรที่ไม่เกี่ยวลงไปในชื่อ variable
 
-ถ้า class/object มันบอกความหมายของตัวมันเองอยู่แล้ว
+( ถ้า class/object มันบอกความหมายของตัวมันเองอยู่แล้ว )
 
 **Bad:**
 
@@ -180,7 +180,7 @@ function paintCar(car) {
 
 ### จงใช้ default arguments
 
-Default arguments are often cleaner than short circuiting. Be aware that if you use them, your function will only provide default values for `undefined` arguments. Other "falsy" values such as `''`, `""`, `false`, `null`, `0`, and `NaN`, will not be replaced by a default value.
+โดยส่วนมาก default arguments นั้นจะอ่านแล้วดู clean กว่าเสมอ แต่ให้ระวังไว้ว่า default arguments นั้นเช็คเพียงแค่ตัว undefined เท่านั้น แต่ไม่ได้เช็คค่าจำพวก falsy อื่นๆ เช่น `''`, `""`, `false`, `null`, `0`, and `NaN`
 
 **Bad:**
 
@@ -205,17 +205,17 @@ function createMicrobrewery(name = 'Hipster Brew Co.') {
 
 ### Function arguments (2 or fewer ideally)
 
-Limiting the amount of function parameters is incredibly important because it makes testing your function easier. Having more than three leads to a combinatorial explosion where you have to test tons of different cases with each separate argument.
+การจำกัดจำนวนของ parameter ใน function นั้นเป็นสิ่งที่สำคัญมาก เพราะมันจะทำให้เราสามารถเขียน test ได้ง่ายขึ้น ถ้าหากยิ่งมีจำนวนของ parameter เยอะขึ้น จำนวนเคสที่เราต้องทำการ test นั้นก็เยอะขึ้นตามไปด้วย
 
-One or two arguments is the ideal case, and three should be avoided if possible. Anything more than that should be consolidated. Usually, if you have more than two arguments then your function is trying to do too much. In cases where it's not, most of the time a higher-level object will suffice as an argument.
+เพียง 1 หรือ 2 parameter น่าจะเป็นค่าที่เหมาะสม parameter ที่ 3 ก็ควรจะหลีกเลี่ยงถ้าเป็นไปได้ และหากมากกว่านั้นแสดงว่า function ของท่านกำลังทำอะไรที่มากเกินไป ถ้ามองแล้วแยกออกมาได้ก็ควรจะแยกออกมาถ้าเป็นไปได้
 
-Since JavaScript allows you to make objects on the fly, without a lot of class boilerplate, you can use an object if you are finding yourself needing a lot of arguments.
+หรือหากแต่ว่ามีความจำเป็นที่ต้องใช้ parameter จำนวนมาก Javascript สามารถให้ท่านสร้าง object ได้สั้นและง่ายมากๆ ท่านสามารถใช้ object นี้ในการรวม arguments เข้าด้วยกันเพื่อให้ดู clean ขึ้นได้
 
-To make it obvious what properties the function expects, you can use the ES2015/ES6 destructuring syntax. This has a few advantages:
+หากเป็นเคสที่ใช้ object อย่างข้างต้น ท่านสามารถใช้ ES2015/ES6 destructuring มาใช้ ซึ่งมีประโยชน์สรุปได้ 3 ข้อดังนี้:
 
-1.  When someone looks at the function signature, it's immediately clear what properties are being used.
-2.  Destructuring also clones the specified primitive values of the argument object passed into the function. This can help prevent side effects. Note: objects and arrays that are destructured from the argument object are NOT cloned.
-3.  Linters can warn you about unused properties, which would be impossible without destructuring.
+1.  ผู้อ่าน code ของเราสามารถเข้าใจได้ทันทีเลยว่า function นี้ต้องการใช้ค่าอะไรบ้าง
+2.  หลีกเลี่ยง side effects
+3.  Linters สามารถเตือนเราหากมี properties ที่ไม่ได้ใช้
 
 **Bad:**
 
